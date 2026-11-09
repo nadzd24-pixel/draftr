@@ -1039,7 +1039,7 @@ export default function App() {
     const handleOAuthMessage = (event: MessageEvent) => {
       // Allow messages from standard development/production origins
       const origin = event.origin;
-      if (!origin.endsWith(".run.app") && !origin.includes("localhost") && !origin.includes("127.0.0.1") && !origin.endsWith(".web.app") && !origin.endsWith(".firebaseapp.com")) {
+      if (!origin.endsWith(".run.app") && !origin.includes("localhost") && !origin.includes("127.0.0.1") && !origin.endsWith(".web.app") && !origin.endsWith(".firebaseapp.com") && !origin.endsWith(".onrender.com")) {
         return;
       }
 
@@ -1130,20 +1130,34 @@ export default function App() {
     return () => window.removeEventListener("message", handleOAuthMessage);
   }, [userName, userHeadline, userAvatar]);
 
-  // Open the LinkedIn popup flow (with direct redirect fallback if popups are blocked)
-  const connectLinkedIn = () => {
+  // Open the LinkedIn popup flow (powered by live Render backend token exchange)
+  const connectLinkedIn = async () => {
     try {
-      const clientId = "77egx6ugs734rl";
-      const origin = window.location.origin;
-      const redirectUri = `${origin}/api/auth/linkedin/callback`;
-      const params = new URLSearchParams({
-        response_type: "code",
-        client_id: clientId,
-        redirect_uri: redirectUri,
-        state: "linkedin-post-creator-auth-state",
-        scope: "openid profile email w_member_social"
-      });
-      const authUrl = `https://www.linkedin.com/oauth/v2/authorization?${params.toString()}`;
+      const serverBase = "https://draftr.onrender.com";
+      let authUrl = "";
+      
+      try {
+        const res = await fetch(`${serverBase}/api/auth/linkedin/url`);
+        if (res.ok) {
+          const data = await res.json();
+          authUrl = data.url;
+        }
+      } catch (e) {
+        console.warn("Could not fetch auth URL from Render, using direct URL:", e);
+      }
+
+      if (!authUrl) {
+        const clientId = "77egx6ugs734rl";
+        const redirectUri = "https://draftr.onrender.com/api/auth/linkedin/callback";
+        const params = new URLSearchParams({
+          response_type: "code",
+          client_id: clientId,
+          redirect_uri: redirectUri,
+          state: "linkedin-post-creator-auth-state",
+          scope: "openid profile email w_member_social"
+        });
+        authUrl = `https://www.linkedin.com/oauth/v2/authorization?${params.toString()}`;
+      }
 
       const width = 600;
       const height = 650;
@@ -1162,9 +1176,7 @@ export default function App() {
       }
     } catch (err: any) {
       console.error("Failed to connect LinkedIn:", err);
-      // Fallback: direct navigation
-      const origin = window.location.origin;
-      window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77egx6ugs734rl&redirect_uri=${origin}/api/auth/linkedin/callback&state=linkedin-post-creator-auth-state&scope=openid profile email w_member_social`;
+      window.location.href = "https://draftr.onrender.com/api/auth/linkedin/url";
     }
   };
 

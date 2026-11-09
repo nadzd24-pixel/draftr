@@ -15,6 +15,17 @@ const PORT = 3000;
 app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ extended: true, limit: "20mb" }));
 
+// Enable CORS for all incoming client requests (e.g. draftrcreate.web.app)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, PATCH");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // File-based local persistent database for ACTUAL users & drafts
 const USERS_DB_PATH = path.join(process.cwd(), "users_db.json");
 
@@ -889,14 +900,14 @@ const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET || "";
 // 1. Return config state of LinkedIn Client configuration and correct redirect URIs
 app.get("/api/linkedin/config", (req, res) => {
   const configured = !!(LINKEDIN_CLIENT_ID && LINKEDIN_CLIENT_SECRET);
-  const appUrl = process.env.APP_URL || "http://localhost:3000";
+  const appUrl = process.env.APP_URL || "https://draftr.onrender.com";
   const redirectUri = `${appUrl}/api/auth/linkedin/callback`;
   res.json({ configured, redirectUri });
 });
 
 // 2. Fetch constructed LinkedIn OAuth redirect URL
 app.get("/api/auth/linkedin/url", (req, res) => {
-  const appUrl = process.env.APP_URL || "http://localhost:3000";
+  const appUrl = process.env.APP_URL || "https://draftr.onrender.com";
   const redirectUri = `${appUrl}/api/auth/linkedin/callback`;
 
   const params = new URLSearchParams({
@@ -916,7 +927,7 @@ app.get("/api/auth/linkedin/callback", async (req, res) => {
   if (!code || typeof code !== "string") {
     return res.status(400).send("Authorization code missing.");
   }
-  const appUrl = process.env.APP_URL || "http://localhost:3000";
+  const appUrl = process.env.APP_URL || "https://draftr.onrender.com";
   const redirectUri = `${appUrl}/api/auth/linkedin/callback`;
 
   try {
