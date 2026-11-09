@@ -1,0 +1,6 @@
+{
+  "name": "draftr",
+  "description": "Transform your raw notes, strategy memos, and professional learnings into polished, scroll-stopping LinkedIn posts, complete with AI-designed matching illustrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

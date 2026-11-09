@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Brand color definitions */
+  --color-brand-cream: #ede6db;
+  --color-brand-dark: #212020;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ede6db; /* Previous signature warm cream */
+  color: #212020; /* Deep charcoal */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom sleek scrollbar matching cream & dark charcoal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ede6db;
+}
+::-webkit-scrollbar-thumb {
+  background: #212020;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #101010;
+}
+
+/* Custom focus ring styling */
+*:focus-visible {
+  outline: 2px solid #212020;
+  outline-offset: 2px;
+}
+

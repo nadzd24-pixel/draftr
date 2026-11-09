@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <rect width="400" height="400" fill="#0f172a" rx="40"/>
+  <!-- Elegant ligature 'd' / 'di' emblem in refined off-white -->
+  <g transform="translate(100, 50) scale(0.65)" fill="none" stroke="#f8fafc" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Upper loop sweeping from left into stem -->
+    <path d="M 50 140 C 20 80, 80 40, 140 60 C 180 75, 200 130, 200 280 L 200 320 C 200 330, 220 330, 225 330" fill="none" stroke="#f8fafc" stroke-width="12"/>
+    <!-- Bottom circular bowl -->
+    <ellipse cx="120" cy="230" rx="75" ry="75" fill="none" stroke="#f8fafc" stroke-width="12"/>
+    <!-- Ascender dot / tittle on top right -->
+    <circle cx="230" cy="85" r="14" fill="#f8fafc" stroke="none"/>
+    <!-- Refined base serif bracket -->
+    <path d="M 195 328 L 225 328" stroke="#f8fafc" stroke-width="10"/>
+  </g>
+  <!-- draftr geometric wordmark -->
+  <text x="200" y="360" text-anchor="middle" fill="#f8fafc" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" letter-spacing="8">draftr</text>
+</svg>

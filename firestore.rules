@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 20-User Beta Cap & System Settings
+    match /system/{document=**} {
+      allow read, write: if true;
+    }
+    
+    // User Profiles & Portfolio Data
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+    
+    // Scheduled & Published Posts
+    match /posts/{postId} {
+      allow read, write: if true;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>draftr</title>
+    <meta name="description" content="Transform your raw notes, strategy memos, and professional learnings into polished, scroll-stopping LinkedIn posts, complete with AI-designed matching illustrations." />
+    <meta property="og:title" content="draftr" />
+    <meta property="og:description" content="Transform your raw notes, strategy memos, and professional learnings into polished, scroll-stopping LinkedIn posts, complete with AI-designed matching illustrations." />
+    <meta name="theme-color" content="#212020" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="draftr" />
+    <link rel="icon" type="image/jpeg" href="/draftr-logo.jpg" />
+    <link rel="apple-touch-icon" href="/draftr-logo.jpg" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>
+      window.deferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        window.deferredPrompt = e;
+        window.dispatchEvent(new CustomEvent('pwa-prompt-available'));
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

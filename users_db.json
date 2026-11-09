@@ -1,0 +1,15 @@
+[
+  {
+    "id": "user-default-1",
+    "email": "nadzd24@gmail.com",
+    "passwordHash": "password123",
+    "name": "Nadzd Creator",
+    "headline": "AI Engineer & Technical Content Creator",
+    "avatar": "https://api.dicebear.com/7.x/pixel-art/svg?seed=creator",
+    "isSubscribed": true,
+    "subscriptionPlan": "annually",
+    "subscriptionDate": "2026-10-24T04:40:55.790Z",
+    "generationCount": 0,
+    "drafts": []
+  }
+]

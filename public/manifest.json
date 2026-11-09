@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "draftr - LinkedIn Post Generator",
+  "short_name": "draftr",
+  "description": "Transform your raw notes, strategy memos, and professional learnings into polished, scroll-stopping LinkedIn posts.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ede6db",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/draftr-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/draftr-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/draftr-logo.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
