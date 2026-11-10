@@ -1951,24 +1951,7 @@ export default function App() {
     return "bg-rose-50 text-rose-800 border border-rose-100";
   };
 
-  // If this window is currently handling the OAuth redirect, render a spinner rather than the login screen
-  const isHandlingOAuth = typeof window !== "undefined" && (
-    window.location.pathname.includes("/api/auth/linkedin/callback") ||
-    new URLSearchParams(window.location.search).has("code")
-  );
 
-  if (isHandlingOAuth && !linkedinAccount) {
-    return (
-      <div className="min-h-screen bg-[#ede6db] text-[#212020] flex flex-col items-center justify-center p-6 text-center antialiased font-sans">
-        <div className="w-24 h-24 mb-6 flex items-center justify-center">
-          <img src="/draftr-logo.jpg" alt="draftr logo" className="w-full h-full object-contain mix-blend-multiply" />
-        </div>
-        <div className="w-8 h-8 border-3 border-[#0a66c2] border-t-transparent rounded-full animate-spin mb-4" />
-        <h2 className="text-xl font-bold font-serif text-[#0f172a]">Connecting your LinkedIn account...</h2>
-        <p className="text-sm text-stone-600 mt-2">Completing authentication...</p>
-      </div>
-    );
-  }
 
 
 
